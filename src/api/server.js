@@ -1,20 +1,27 @@
 import express from 'express'
 import cors from 'cors'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 const app = express()
 const port = 3000
+const baseUrl = `http://localhost:${port}`
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 app.use(express.json(), cors())
 
+app.use('/static', express.static(path.join(__dirname, 'public')))
+
 app.get('/api', (req, res) => {
-    console.log('GET /api called')
     res.json([
 {
 "id": 1,
 "title": "Ремень мужской",
 "price": 434,
 "category": "Аксессуары",
-"image": "/images/1.webp",
+"image": `${baseUrl}/static/images/1.webp`,
 "description": "Элегантный мужской кожаный ремень, изготовленный из первоклассной натуральной кожи, является идеальным подарком для вашего любимого мужчины."
 },
 {
@@ -22,7 +29,7 @@ app.get('/api', (req, res) => {
 "title": "Комплект термобелья",
 "price": 1341,
 "category": "Одежда",
-"image": "/images/2.webp",
+"image": `${baseUrl}/static/images/2.webp`,
 "description": "Идеальный выбор для людей, которые ценят качество, надежность и комфорт"
 },
 {
@@ -30,7 +37,7 @@ app.get('/api', (req, res) => {
 "title": "Плоскогубцы",
 "price": 793,
 "category": "Инструменты",
-"image": "/images/3.webp",
+"image": `${baseUrl}/static/images/3.webp`,
 "description": "Комплектация плоскогубцы в сборе"
 },
 {
@@ -38,7 +45,7 @@ app.get('/api', (req, res) => {
 "title": "МОЩНЫЙ РУЧНОЙ ФОНАРЬ",
 "price": 938,
 "category": "Туризм",
-"image": "/images/4.webp",
+"image": `${baseUrl}/static/images/4.webp`,
 "description": "Подарочная коробка; фонарь; кабель USB TYPE-C; ремешок; аккумулятор 26650 1 шт"
 },
 {
@@ -46,7 +53,7 @@ app.get('/api', (req, res) => {
 "title": "Сумка мужская через плечо",
 "price": 1679,
 "category": "Аксессуары",
-"image": "/images/5.webp",
+"image": `${baseUrl}/static/images/5.webp`,
 "description": "Стильно, удобно, практично и не дорого 👍"
 },
 {
@@ -54,7 +61,7 @@ app.get('/api', (req, res) => {
 "title": "Умные, напольные весы с Bluetooth",
 "price": 810,
 "category": "Техника",
-"image": "/images/6.webp",
+"image": `${baseUrl}/static/images/6.webp`,
 "description": "Умные Весы для сопровождения и контроля массы тела. Электронные весы для здоровья и красоты идеальный помощник для контроля веса, процентного содержания жира, воды и мышц, а таже уровень других показателей ведь это умные напольные весы."
 },
 {
@@ -62,7 +69,7 @@ app.get('/api', (req, res) => {
 "title": "Протеиновые батончики",
 "price": 629,
 "category": "Спорт",
-"image": "/images/7.webp",
+"image": `${baseUrl}/static/images/7.webp`,
 "description": "Откройте для себя непревзойденный вкус тропиков с нашими протеиновыми батончиками без сахара со вкусом Кокос!"
 },
 {
@@ -70,7 +77,7 @@ app.get('/api', (req, res) => {
 "title": "Подвеска Обезьянка",
 "price": 66,
 "category": "Аксессуары",
-"image": "/images/8.webp",
+"image": `${baseUrl}/static/images/8.webp`,
 "description": "Эта подвеска в виде обезьяны для автомобиля имеет уникальный дизайн, демонстрирующий модную индивидуальность."
 },
 {
@@ -78,7 +85,7 @@ app.get('/api', (req, res) => {
 "title": "Шейкер с круглым дном",
 "price": 439,
 "category": "Спорт",
-"image": "/images/9.webp",
+"image": `${baseUrl}/static/images/9.webp`,
 "description": "Шейкер для спортивного питания Sports Element – незаменимая вещь для людей, ведущих активный образ жизни."
 },
 {
@@ -86,7 +93,7 @@ app.get('/api', (req, res) => {
 "title": "Чесалка для спины",
 "price": 99,
 "category": "Здоровье",
-"image": "/images/10.webp",
+"image": `${baseUrl}/static/images/10.webp`,
 "description": "Чесалка для спины телескопическая - это уникальный инструмент, который поможет вам расслабиться и отдохнуть после долгого рабочего дня."
 },
 ])

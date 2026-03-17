@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './ListOfCards.css'
+import './ListOfCards.scss'
 
 function ListOfCards() {
     const [products, setProducts] = useState(null)
@@ -12,8 +12,12 @@ function ListOfCards() {
 
     if (products) {
         return (
-            <ul>
-                {products.map((product) => (<li key={product.id}>{product.title}</li>))}
+            <ul className='product-cards'>
+                {products.map((product) => (<li key={product.id} className='product-cards__card'>
+                    <img src={product.image} className='product-cards__image'></img>
+                    <span className='product-cards__title'>{product.title}</span>
+                    <span className='product-cards__price'>{product.price} ₽</span>
+                    </li>))}
             </ul>
         )
     } else return ('Loading...')
