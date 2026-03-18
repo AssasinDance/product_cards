@@ -1,11 +1,13 @@
 import './App.css'
 import ListOfCards from './components/ListOfCards'
+import Search from './components/Search'
 
 function App() {
 
   return (
     <>
-    <ListOfCards></ListOfCards>
+      <Search></Search>
+      <ListOfCards></ListOfCards>
     </>
   )
 }
