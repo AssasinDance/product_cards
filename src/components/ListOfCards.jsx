@@ -1,16 +1,8 @@
-import { useEffect, useState } from 'react'
 import './ListOfCards.scss'
 
-function ListOfCards() {
-    const [products, setProducts] = useState(null)
+function ListOfCards({products}) {
 
-    useEffect(() => {
-        fetch('http://localhost:3000/api')
-        .then((res) => res.json())
-        .then((json) => setProducts(json))
-    }, [])
-
-    if (products) {
+    if (products && products.length !== 0) {
         return (
             <ul className='product-cards'>
                 {products.map((product) => (<li key={product.id} className='product-cards__card'>
@@ -20,7 +12,9 @@ function ListOfCards() {
                     </li>))}
             </ul>
         )
-    } else return ('Loading...')
+    } else if (products === null) {
+        return (<span className='product-cards__alt-info'>Загрузка...</span>)
+    } else return (<span className='product-cards__alt-info'>Товары не найдены</span>)
     
 }
 

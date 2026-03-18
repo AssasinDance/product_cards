@@ -40,4 +40,11 @@
         align-self: flex-end;
         padding: 5px;
     }
+
+    &__alt-info {
+        display: block;
+        text-align: center;
+        font-size: 20px;
+        padding: 16px;
+    }
 }
